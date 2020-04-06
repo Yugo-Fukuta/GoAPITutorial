@@ -2,7 +2,7 @@ package db
 
 import (
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 var (
@@ -19,7 +19,7 @@ func Init() {
 	DBNAME := "go_api_tutorial_db"
 
 	CONNECT := USER + ":" + PASS + "@" + PROTOCOL + "/" + DBNAME + "?parseTime=true"
-	db, err := gorm.Open(DBMS, CONNECT)
+	db, err = gorm.Open(DBMS, CONNECT)
 
 	if err != nil {
 		panic(err.Error())
