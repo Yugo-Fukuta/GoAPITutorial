@@ -24,6 +24,8 @@ func Init() {
 	if err != nil {
 		panic(err.Error())
 	}
+
+	autoMigration()
 }
 
 // GetDB is called in models
@@ -36,4 +38,8 @@ func Close() {
 	if err := db.Close(); err != nil {
 		panic(err)
 	}
+}
+
+func autoMigration() {
+	db.AutoMigrate(&entity.User{})
 }
