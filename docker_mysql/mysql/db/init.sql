@@ -1,0 +1,2 @@
+CREATE DATABASE go_api_tutorial_db;
+USE go_api_tutorial_db;
