@@ -13,7 +13,7 @@ type Service struct{}
 // User is alias of entity.User struct
 type User entity.User
 
-//railsでいうfindメソッドの定義
+//railsでいうfind.allメソッドの定義
 func (s Service) GetAll() ([]User, error) {
 	db := db.GetDB()
 	var u []User
@@ -25,7 +25,23 @@ func (s Service) GetAll() ([]User, error) {
 	return u, nil
 }
 
-//railsでいうfind.allメソッドの定義
+//railsでいうsaveメソッドの定義
+func (s Service) CreateModel(c *gin.Context) (User, error) {
+	db := db.GetDB()
+	var u User
+
+	if err := c.BindJSON(&u); err != nil {
+		return u, err
+	}
+
+	if err := db.Create(&u).Error; err != nil {
+		return u, err
+	}
+
+	return u, nil
+}
+
+//railsでいうfindメソッドの定義
 func (s Service) GetByID(id string) (User, error) {
 	db := db.GetDB()
 	var u User

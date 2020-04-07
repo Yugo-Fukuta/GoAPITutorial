@@ -2,6 +2,8 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
+
+	"github.com/Yugo-Fukuta/GoAPITutorial/controller"
 )
 
 // Init is initialize server
